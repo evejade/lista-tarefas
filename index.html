@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarefas</title>
+
+    <style>
+* {
+    margin:0;
+    box-sizing: border-box;
+    font-family: arial;
+}
+
+body{
+    border: 1px solid red;
+    min-height: 100vh;
+    display:flex;
+    flex-direction:column;
+    background-color: #ccd5ae;
+    align-items: center;
+}
+#div{
+    padding: 30px;
+    text-align: center;
+}
+#footer{
+    padding:20px;
+    border-radius: 100px;
+}
+.input{
+    border-radius: 3px;
+    border: none;
+    padding: 6px;
+}
+.title{
+    text-transform: uppercase;
+    font-size: 15px;
+
+
+}
+main{
+    flex:auto;
+    padding:20px;
+    border-radius: 10px;
+    background-color: #ccd5ae;
+}
+main ul {
+    padding:0;
+   list-style:decimal;
+}
+main li{
+    border-bottom:1px solid #d4a373;
+    padding: 5px 0;
+}
+
+button{
+    padding: 6px;
+    width: 100px;
+    border-radius: 100px;
+    color:black;
+    outline: none;
+    font-size: 15px;
+    font-weight: 500;
+    background-color: white;
+}
+    </style>
+
+</head>
+<body>
+
+<div id="div">
+   <div class="title">
+    <h1>Tarefas</h1>
+   </div> 
+
+  <div id="footer">
+    <input class="input" type="text">
+    <button onclick="add()">Selecionar</button>
+   </div>
+   <main>
+    <ul></ul>
+</main>
+</div>
+
+<script>
+        const tarefas = []
+
+        function add(){
+            const input = document.querySelector("input")
+            const tarefa = input.value
+            tarefas.push(tarefa)
+            input.value = ""
+            render()
+        }
+
+        function render(){
+            const ul = document.querySelector("ul")
+            ul.innerHTML = null
+
+            tarefas.forEach(function(tarefa){
+                const li =document.createElement('li')
+                li.innerText = tarefa
+                ul.appendChild(li)
+            })
+        }
+        render()
+
+        
+    </script>
+</body>
+</html>
